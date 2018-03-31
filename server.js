@@ -8,7 +8,7 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .use(bodyParser.json())
   .put('/map', (req, res) => {
-    fs.writeFileSync(req.body.name+"",req.body.h + "\n" + req.body.m + "\n" + req.body.s + "\n" + req.body.lat + "\n" + req.body.lon + "\n" + req.body.bat);
+    fs.writeFileSync(req.body.name+"",req.body.h + "\n" + req.body.m + "\n" + req.body.s + "\n" + req.body.lat + "\n" + req.body.lon + "\n" + req.body.bat + req.body.oh + "\n" + req.body.om + "\n" + req.body.os + "\n" + req.body.olat + "\n" + req.body.olon);
     var s=req.body.name+"";
     res.json({msg:s});
 })
@@ -16,9 +16,9 @@ express()
     if( fs.existsSync(req.params.name + "")){
     var text = fs.readFileSync(req.params.name + "", "utf8");
     var t = text.split("\n");
-    res.json({ h: t[0], m: t[1], s: t[2], lat: t[3], lon: t[4], bat: t[5] });
+    res.json({ h: t[0], m: t[1], s: t[2], lat: t[3], lon: t[4], bat: t[5], oh: t[6], om: t[7], os: t[8], olat: t[9], olon: t[10] });
     }
     else
-    res.json({ h: "-1", m: "-1", s: "-1", lat: "-1", lon: "-1", bat: "-1" });
+    res.json({ h: "-1", m: "-1", s: "-1", lat: "-1", lon: "-1", bat: "-1", oh: "-1", om: "-1", os: "-1", olat: "-1", olon: "-1" });
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
