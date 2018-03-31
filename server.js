@@ -8,7 +8,14 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .use(bodyParser.json())
   .put('/map', (req, res) => {
-    fs.writeFileSync(req.body.name+"",req.body.h + "\n" + req.body.m + "\n" + req.body.s + "\n" + req.body.lat + "\n" + req.body.lon + "\n" + req.body.bat + req.body.oh + "\n" + req.body.om + "\n" + req.body.os + "\n" + req.body.olat + "\n" + req.body.olon);
+    if( fs.existsSync(req.params.name + "")){
+      var text = fs.readFileSync(req.params.name + "", "utf8");
+      var t = text.split("\n");
+      fs.writeFileSync(req.body.name+"",req.body.h + "\n" + req.body.m + "\n" + req.body.s + "\n" + req.body.lat + "\n" + req.body.lon + "\n" + req.body.bat +"\n"+t[0]+"\n"+t[1]+"\n"+t[2]+"\n"+t[3]+"\n"+t[4]);
+      }
+      else
+      fs.writeFileSync(req.body.name+"",req.body.h + "\n" + req.body.m + "\n" + req.body.s + "\n" + req.body.lat + "\n" + req.body.lon + "\n" + req.body.bat +"\n0\n0\n0\n0\n0\n0\n0");
+    
     var s=req.body.name+"";
     res.json({msg:s});
 })
