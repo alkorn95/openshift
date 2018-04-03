@@ -11,7 +11,7 @@ express()
     if( fs.existsSync(req.body.name + "")){
       var text = fs.readFileSync(req.body.name + "", "utf8");
       var t = text.split("\n");
-      if(req.body.flag==="1")
+      if(req.body.flag=="1")
       fs.writeFileSync(req.body.name+"",req.body.h + "\n" + req.body.m + "\n" + req.body.lat + "\n" + req.body.lon + "\n" + req.body.bat +"\n"+t[0]+"\n"+t[1]+"\n"+t[2]+"\n"+t[3]+"\n"+t[9]+"\n"+t[10]+"\n"+t[11]+"\n"+t[12]+ "\n" + req.body.flag);
       else
       fs.writeFileSync(req.body.name+"",t[0]+"\n"+t[1]+"\n"+t[2]+"\n"+t[3]+"\n"+ req.body.bat +"\n"+t[5]+"\n"+t[6]+"\n"+t[7]+"\n"+t[8]+"\n"+req.body.lat + "\n" + req.body.lon+"\n"+req.body.h + "\n" + req.body.m+ "\n" + req.body.flag);
