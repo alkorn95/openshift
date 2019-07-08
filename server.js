@@ -81,9 +81,9 @@ express()
                     dist = GetDist(nlat, lat, nlon, lon)
                     if (dist < 10000)
                         cnear++
-                    if (dist < 450000)
+                    if (dist < 20000)
                         cmid++
-                    if (dist < 500000)
+                    if (dist < 50000)
                         cfar++
                 }
                 res.json({ near: cnear, mid: cmid, far: cfar });
