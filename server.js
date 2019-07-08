@@ -83,7 +83,7 @@ express()
                         cnear++
                     if (dist < 20000)
                         cmid++
-                    if (dist < 500000)
+                    if (dist < 50000)
                         cfar++
                 }
                 res.json({ near: cnear, mid: cmid, far: cfar });
