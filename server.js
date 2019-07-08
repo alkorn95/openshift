@@ -83,12 +83,10 @@ express()
                         cnear++
                     if (dist < 20000)
                         cmid++
-                    if (dist < 50000)
+                    if (dist < 500000)
                         cfar++
                 }
                 res.json({ near: cnear, mid: cmid, far: cfar });
-
-                console.log(res.statusCode);
             });
         }
         else
