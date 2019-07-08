@@ -81,7 +81,7 @@ express()
                     dist = GetDist(nlat, lat, nlon, lon)
                     if (dist < 10000)
                         cnear++
-                    if (dist < 20000)
+                    if (dist < 450000)
                         cmid++
                     if (dist < 500000)
                         cfar++
