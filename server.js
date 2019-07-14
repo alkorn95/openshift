@@ -52,15 +52,7 @@ express()
     .get('/map/:name', (req, res) => {
         if (fs.existsSync(req.params.name + "")) {
             var text = fs.readFileSync(req.params.name + "", "utf8");
-            var t = text.split("\n");
-            if(req.params.name==4)//temporary fix for one device
-            {
-                t[2]=(Number(t[2])/3.45+47.8)
-                t[7]=(Number(t[7])/3.45+47.8)
-                
-                t[3]=(Number(t[3])/2.11+35.2)
-                t[8]=(Number(t[8])/2.11+35.2)
-            }
+            var t = text.split("\n");            
             res.json({ h: t[0], m: t[1], lat: t[2], lon: t[3], bat: t[4], oh: t[5], om: t[6], olat: t[7], olon: t[8] });
         }
         else
